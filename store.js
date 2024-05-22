@@ -2,13 +2,6 @@ import { reducer } from '/reducers.js'
 import { Action } from '/actions.js'
 
 /**
- * @typedef {object} Num
- * @prop {integer} value
- */
-
-export const Num = {}
-
-/**
  * @typedef {object} State
  * @prop {Num} num
  */
@@ -36,7 +29,7 @@ export const State = {}
  */
 
 /**
- * @type {Array<Subscribe>}
+ * @type {Array<Subscription>}
  */
 let subscribers = []
 
@@ -45,9 +38,7 @@ let subscribers = []
  */
 const states = [
     {
-        num: {
-            value: 0
-        }
+        num: 0
     }
 ]
 
@@ -56,6 +47,13 @@ const states = [
  */
 export const getState = () => {
     return Object.freeze({...states[0]})
+}
+
+/**
+ * @returns {State}
+ */
+export const displayNum = () => {
+
 }
 
 /**

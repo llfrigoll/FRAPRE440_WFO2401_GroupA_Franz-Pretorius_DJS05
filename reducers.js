@@ -10,33 +10,15 @@ import { Action } from '/actions.js'
 export const reducer = (state, action) => {
     switch(action.type) {
         case 'ADD': {
-            return {
-                ...state,
-                num: {
-                    ...state.num,
-                    num: action.num
-                }
-            }
+            return action.state
         }
 
         case 'SUBTRACT': {
-            return {
-                ...state,
-                num: {
-                    ...state.num,
-                    num: action.num
-                }
-            }
+            return action.state
         }
 
         case 'RESET': {
-            return {
-                ...state,
-                num: {
-                    ...state.num,
-                    num: action.num
-                }
-            }
+            return action.state
         }
 
         default: return state;

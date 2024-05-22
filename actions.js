@@ -1,43 +1,47 @@
-import { Num } from '/store.js'
+import { State } from '/store.js'
 
 /**
  * @typedef {object} Add
  * @prop {'ADD'} type
- * @prop {Num} num
+ * @prop {State} state
  */
 
 /**
  * @typedef {object} Subtract
  * @prop {'SUBTRACT'} type
- * @prop {Num} num
+ * @prop {State} state
  */
 
 /**
  * @typedef {object} Reset
  * @prop {'RESET'} type
- * @prop {Num} num
+ * @prop {State} state
  */
 
 /**
+ * @param {State} state
  * @returns {Add}
  */
-export const add = () => {
+export const add = (state) => {
+    const newNum = state.num + 1
     return {
         type: 'ADD',
-        num: {
-            value: value + 1
+        state: {
+            num: newNum
         }
     }
 }
 
 /**
+ * @param {State} state
  * @returns {Subtract}
  */
-export const subtract = () => {
+export const subtract = (state) => {
+    const newNum = state.num - 1
     return {
         type: 'SUBTRACT',
-        num: {
-            value: value - 1
+        state: {
+            num: newNum
         }
     }
 }
@@ -48,8 +52,8 @@ export const subtract = () => {
 export const reset = () => {
     return {
         type: 'RESET',
-        num: {
-            value: 0
+        state: {
+            num: 0
         }
     }
 }

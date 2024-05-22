@@ -1,10 +1,12 @@
-import { subscribe, dispatch } from '/store.js'
+import { subscribe, dispatch, getState } from '/store.js'
 import { add, subtract, reset } from '/actions.js'
 
-subscribe((_, next) => console.log(next))
+console.log(getState())
+dispatch(add(getState()))
+console.log(getState())
 
-dispatch(add())
-dispatch(reset())
-dispatch(subtract())
+dispatch(reset(getState()))
+console.log(getState())
 
-
+dispatch(subtract(getState()))
+console.log(getState())

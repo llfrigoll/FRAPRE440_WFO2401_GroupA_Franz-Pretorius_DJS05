@@ -19,10 +19,6 @@ export const State = {}
  */
 
 /**
- * @callback EmptyFn
- */
-
-/**
  * @callback Subscription
  * @param {State} prev
  * @param {State} next
@@ -43,41 +39,37 @@ const states = [
 ]
 
 /**
+ * function returns the most recent state
  * @returns {State}
  */
 export const getState = () => {
-    return Object.freeze({...states[0]})
+    return Object.freeze(states[0])
 }
 
 /**
- * @returns {State}
- */
-export const displayNum = () => {
-
-}
-
-/**
+ * function uses the reducer function to apply an action on the current state to get a new state, thereafter it runs a function
+ * on every subscription in subscribers using 'prev' and 'next' and finally unshifts the states array with the newest state('next')
  * @param {Action} action 
  */
 export const dispatch = (action) => {
     const prev = getState()
     const next = reducer(prev, action)
 
-    const handler = (item) => item(prev, next)
-    subscribers.forEach(handler)
+    subscribers.forEach(item => item(prev, next))
 
     states.unshift(next)
 }
 
 /**
+ * takes in a subscription(prev, next) and adds it to the subscribers array, declares an unsubscribe function that creates
+ * a new array filtering out any items that aren't a subscription and then thereafter returns the unsubscribe function
  * @param {Subscription} subscription 
  */
 export const subscribe = (subscription) => {
     subscribers.push(subscription)
-    const handler = (item) => item !== subscription
 
     const unsubscribe = () => {
-        const newSubscribers = subscribers.filter(handler)
+        const newSubscribers = subscribers.filter(item => item !== subscription)
         subscribers = newSubscribers
     }
 

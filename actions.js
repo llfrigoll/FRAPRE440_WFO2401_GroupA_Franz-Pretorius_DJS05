@@ -19,6 +19,8 @@ import { State } from '/store.js'
  */
 
 /**
+ * function that takes in a state, uses the number in the state to get a new number that is increased by 1 and thereafter
+ * returns an object containing the action type and the state with the updated number
  * @param {State} state
  * @returns {Add}
  */
@@ -33,6 +35,8 @@ export const add = (state) => {
 }
 
 /**
+ * function that takes in a state, uses the number in the state to get a new number that is decreased by 1 and thereafter
+ * returns an object containing the action type and the state with the updated number
  * @param {State} state
  * @returns {Subtract}
  */
@@ -47,6 +51,7 @@ export const subtract = (state) => {
 }
 
 /**
+ * function that returns an object containing the action type and the state with the number reset to 0
  * @returns {Reset}
  */
 export const reset = () => {

@@ -19,4 +19,30 @@ console.log(getState())
 
 
 //UPDATED WITH USER INTERACTION
-const count = document.getElementById
+const countEl = document.getElementById('count')
+const addEl = document.getElementById('add')
+const subtractEl = document.getElementById('subtract')
+const resetEl = document.getElementById('reset')
+
+//Initializes the count for the html
+countEl.textContent = getState().num
+
+//Event listeners for each button, adding, subtracting or resetting where applicable, each updating the counter's
+//text content and console logging the new state
+addEl.addEventListener('click', () => {
+    dispatch(add(getState()))
+    countEl.textContent = getState().num
+    console.log(getState())
+})
+
+subtractEl.addEventListener('click', () => {
+    dispatch(subtract(getState()))
+    countEl.textContent = getState().num
+    console.log(getState())
+})
+
+resetEl.addEventListener('click', () => {
+    dispatch(reset(getState()))
+    countEl.textContent = getState().num
+    console.log(getState())
+})

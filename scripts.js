@@ -16,3 +16,7 @@ console.log(getState())
 //resets the number to 0 and returns the state
 dispatch(reset(getState()))
 console.log(getState())
+
+
+//UPDATED WITH USER INTERACTION
+const count = document.getElementById
